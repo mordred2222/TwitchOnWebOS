@@ -5,10 +5,10 @@
     "icon": "icon.png",
     "main": "index.html",
     "bgImage": "background.png",
-    "id": "com.patrickrorth.twitchtv",
+    "id": "be.leweb.twitchtv",
     "title": "Twitch",
     "type": "web",
-    "version": "0.0.6",
+    "version": "0.0.7",
     "splashBackground": "background.png",
     "uiRevision":2
 }

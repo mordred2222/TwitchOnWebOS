@@ -6,7 +6,7 @@
 
 <script src="webOSjs-0.1.0/webOS.js" charset="utf-8"></script>
 <script src="content/twitch.js" charset="utf-8"></script>
-<script src="http://ajax.googleapis.com/ajax/libs/swfobject/2.2/swfobject.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/swfobject/2.2/swfobject.js"></script>
 <script	src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 
 
@@ -14,7 +14,6 @@
 	
 	(function() {
 		
-
 		showGames();
 		
 		
@@ -34,7 +33,6 @@
 						searchChannel($("#search").val());    
 					}
 				});
-
 			})();
 	
 			// CLICK A STREAM :: WHEN CKICK A STREAM IMAGE -> SHOW STREAM
@@ -43,8 +41,7 @@
 				var id = $(this).attr("id");
 				var name = $(this).attr("name");
 			  
-				window.location = "stream.html#" + name;
-
+				window.location = "stream.html?channel=" + name;
 			});
 		 
 			
@@ -71,8 +68,7 @@
 		            	
 		            	$.each(data.streams, function(index, value){
 		            			            		
-		            		$("#twitch-widget-streamlist").append("<div class='stream_img'><a href='#' name='" + value.channel.name + "' id='" + value._id + "'><img src='" + value.preview.medium + "'></a><br><b>" + value.channel.status + "</b><br/><div class='game_status'>" + value.viewers + " viewers on " + value.channel.display_name + "</div></div>");
-
+		            		$("#twitch-widget-streamlist").append("<div tabindex='0' class='stream_img'><a tabindex='1' href='#channel=' name='" + value.channel.name + "' id='" + value._id + "'><img tabindex='2' src='" + value.preview.medium + "'></a><br><b>" + value.channel.status + "</b><br/><div class='game_status'>" + value.viewers + " viewers on " + value.channel.display_name + "</div></div>");
 		            	})
 		            }
 				});
@@ -83,9 +79,40 @@
 	</script>
 	
 	
+<script type="text/javascript">
+
+document.addEventListener("keydown", function(inEvent){
+    var message = "<h1>" + "Keycode is <lg_red>" + inEvent.keyCode + "</lg_red></h1>"+ "</br>";
+    document.getElementById("results").innerHTML = message;
+    if (inEvent.keyCode==403) showGames();
+    if (inEvent.keyCode==404) showChannels();
+    
+    //if (inEvent.keyCode==405) document.getElementById("results").style.visibility = "collapse";
+    if (inEvent.keyCode==406) document.getElementById("results").focus();
+    
+    
+    if (inEvent.keyCode==13)  $("#search").focus();
+    	// searchChannel($("#search").val());
+    // if (inEvent.keyCode==38) // UP searchChannel($("#search").val());
+    if (inEvent.keyCode==37) {
+    	var tabindex = $("#twitch-widget-gamelist").attr('tabindex');
+        tabindex++; //increment tabindex
+        $('*').attr('tabindex', tabindex).focus();
+    	
+    }
+
+    // if (inEvent.keyCode==40) // DOWN searchChannel($("#search").val());
+    // if (inEvent.keyCode==39) // RIGHT searchChannel($("#search").val());
+    
+    
+		}
+);
+
+</script>
 </head>
 <body>
 	<div class="left_panel">
+	
 		<div class="logo">
 			<img src="content/twitch_logo_trans.png" alt="">
 			<input type="search" placeholder="Stream Search" class="search" id="search">
@@ -95,13 +122,17 @@
 			<span class="title">BROWSE</span>
 			<ul class="left_panel_menu_list">
 				<li>
-					<a href="#" id="games">Games</a>
+					<a href="#" id="games"><img src="content/redbutton.png"> Games</a>
 				</li>
 				<li>
-					<a href="#" id="channels">Channels</a>
+					<a href="#" id="channels"><img src="content/greenbutton.png"> Channels</a>
 				</li>
 			</ul>
 		</div>
+<div id="results" style="visibility:visible">
+		<h1>Press a Key</h1>
+</div>	
+		
 	</div>
 
 	<div class="right_panel">	
