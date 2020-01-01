@@ -8,8 +8,8 @@ I did that a few times, until it started to piss me off, so i started to look in
 ## Installation instructions
 If you want to try out the app for your self, you can just follow these steps.
 
-* Download latest zip from [Dropbox](https://www.dropbox.com/s/7np16b29jye3lfk/TwitchTV.zip?dl=0). (V.0.4)
-* Unzip it to the root of your usb flash drive.
+* Download latest zip from https://leweb.be/twitch-on-webos/ 
+* Copy it to an USB key.
 * Attach your flash drive to the tv.
 * Find app in the smart menu.
 
